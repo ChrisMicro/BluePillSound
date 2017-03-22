@@ -1,4 +1,5 @@
 /*
+
   sigma delta modulator experiments
 
   Generate a wavetable song sound.
@@ -7,10 +8,22 @@
 
   Uses the melodies of  "Weihnachtsklingel" from M.Baudisch ( take a look at the comments of the file lied.h )
 
-  Hardware: Arduino Uno
-  Output pin: Pin 2 on Arduino ( Sigma Delta DAC ) connect to a RC-Low pass ( 470 Ohm, 100nF )
 
-  2.6.2013 ch
+  ************************************************************************
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  ********************* list of outhors **********************************
+
+  v0.1   2.6.2013  C. -H-A-B-E-R-E-R-  initial version
+  v0.2  22.3.2017  C. -H-A-B-E-R-E-R-  addapted and improved for STM32F103 ( Blue Pill )
+
+  It is mandatory to keep the list of authors in this code.
+  Please add your name if you improve/extend something
+
 
 */
 
