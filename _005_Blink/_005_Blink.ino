@@ -2,8 +2,8 @@
  * 
  * simple blink program with macros
  * 
- *  6.3.2017 ChrisMicro
- * 23.3.2017 addapted for BluePill
+ *  6.3.2017 ChrisMicro initial version
+ * 23.3.2017 ChrisMicro addapted for BluePill
  * 
  */
  
