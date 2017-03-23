@@ -1,17 +1,25 @@
 /*
  * 
- * simple blink program with macros
+ * simple square wave by toggling speaker pin
  * 
  *  6.3.2017 ChrisMicro initial version
  * 23.3.2017 ChrisMicro addapted for BluePill
  * 
  */
+#define USEFASTPINFUNCTIONS
 
-#define SPEAKERPIN          PB12 // Blue Pill SPEAKER
-#define INITSPEAKERPIN      pinMode(SPEAKERPIN, OUTPUT)
+#ifdef USEFASTPINFUNCTIONS
+ #include "speakerpin.h"
 
-#define SPEAKERPINHIGH      digitalWrite(SPEAKERPIN, HIGH)
-#define SPEAKERPINLOW       digitalWrite(SPEAKERPIN, LOW)
+#else  // slow Arduino functions
+  
+  #define SPEAKERPIN          PB12 // Blue Pill SPEAKER
+  #define INITSPEAKERPIN      pinMode(SPEAKERPIN, OUTPUT)
+  
+  #define SPEAKERPINHIGH      digitalWrite(SPEAKERPIN, HIGH)
+  #define SPEAKERPINLOW       digitalWrite(SPEAKERPIN, LOW)
+ 
+#endif
 
 void toggleSpeakerPin()
 {
@@ -24,8 +32,7 @@ void toggleSpeakerPin()
 }
 
 #define TOGGLESPEAKERPIN toggleSpeakerPin()
-
-
+  
 void playSound(long freq_Hz, long duration_ms)
 {
   uint16_t n;
