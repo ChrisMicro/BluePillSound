@@ -56,7 +56,7 @@ void sound(uint16_t pitch, uint16_t duration)
   {
     // DDS ( direct digital synthesis )
     index = phase >> 16;
-    sollwert=sin_int8(index&0xFF)+128;
+    sollwert = sin_int8(index & 0xFF) + 128;
     phase += phaseDelta;
     timer--;
 
@@ -83,7 +83,7 @@ void sound(uint16_t pitch, uint16_t duration)
 
 #define WAVEBUFFERLENGTH 10000
 uint8_t WaveBuffer[WAVEBUFFERLENGTH];
-uint32_t CorrectionFactorSamplingRate=400; // CPU execution speed dependent
+uint32_t CorrectionFactorSamplingRate = 400; // CPU execution speed dependent
 
 // sigma delta buffer sound player
 void playSound(uint8_t *samplesBuffer, uint32_t bufferLength)
@@ -91,14 +91,14 @@ void playSound(uint8_t *samplesBuffer, uint32_t bufferLength)
   int16_t  integrator =  0;
   uint16_t sollwert   = 128;
   uint8_t  oldValue   =  0;
- 
-  uint32_t n,k;
-  
+
+  uint32_t n, k;
+
   FASTSOUNDPIN.pinMode(OUTPUT);
-  for(n=0;n<bufferLength;n++)
+  for (n = 0; n < bufferLength; n++)
   {
-    sollwert=WaveBuffer[n];
-    
+    sollwert = WaveBuffer[n];
+
     // sigma delta DAC, hold the DAC value for n-steps constant
     for (k = 0; k < CorrectionFactorSamplingRate; k++)
     {
@@ -127,19 +127,23 @@ void initSoundPlayer(uint32_t samplingFrequency_Hz)
 {
   int32_t n;
   SamplingFrequency_Hz = samplingFrequency_Hz;
+
+  for (n = 0; n < INITTESTLENGTH; n++) WaveBuffer[n] = 0; // clear buffer
   
-  for(n=0;n<INITTESTLENGTH;n++) WaveBuffer[n]=0;// clear buffer
+  delay(100);
   
   uint32_t startTime = micros();
-  playSound(WaveBuffer,INITTESTLENGTH);
+  playSound(WaveBuffer, INITTESTLENGTH);
   uint32_t stopTime = micros();
 
   uint32_t duration_us             = stopTime - startTime;
-  uint32_t measuredSamplingRate_Hz = INITTESTLENGTH *1000000UL / duration_us;
-  uint32_t adustmentRelation_x1000 = measuredSamplingRate_Hz *1000 / samplingFrequency_Hz;
-  
+  uint32_t measuredSamplingRate_Hz = INITTESTLENGTH * 1000000UL / duration_us;
+
+  uint32_t adustmentRelation_x1000 = measuredSamplingRate_Hz * 1000 / samplingFrequency_Hz;
+
   // adjust factor
-  CorrectionFactorSamplingRate = CorrectionFactorSamplingRate * adustmentRelation_x1000 /1000;
+  CorrectionFactorSamplingRate = CorrectionFactorSamplingRate * adustmentRelation_x1000 / 1000;
+
 }
 
 #define SAMPLINGFREQUENCY_HZ 22100
@@ -147,25 +151,25 @@ void initSoundPlayer(uint32_t samplingFrequency_Hz)
 void calcSound()
 {
   int32_t n;
-  float f_Hz=440;
-  for(n=0;n<WAVEBUFFERLENGTH;n++)
+  float f_Hz = 440;
+  for (n = 0; n < WAVEBUFFERLENGTH; n++)
   {
-    WaveBuffer[n]=( sin(2*PI*f_Hz/SamplingFrequency_Hz*n)+1)*127;
+    WaveBuffer[n] = ( sin(2 * PI * f_Hz / SamplingFrequency_Hz * n) + 1) * 127;
   }
-  
+
 }
 
-void setup() 
+void setup()
 {
   FASTSOUNDPIN.pinMode(OUTPUT);
   initSoundPlayer(22050);
 }
 
-void loop() 
+void loop()
 {
 
   calcSound();
-  playSound(WaveBuffer,WAVEBUFFERLENGTH);
+  playSound(WaveBuffer, WAVEBUFFERLENGTH);
 
   //sound(1000,1000);
 }
