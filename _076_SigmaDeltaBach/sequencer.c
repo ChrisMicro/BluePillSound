@@ -203,15 +203,15 @@ void noteOff(uint8_t channel, uint8_t note)
   }
 }
 /****************************************************************************
-
-     (c) 2013 Christoph Haberer, christoph(at)roboterclub-freiburg.de
-
+ *
+ *   (c) 2013 ChrisMicro
+ *
  ***************************************************************************
-     This program is free software; you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation version 2 of the License,
-     If you extend the program please maintain the list of authors.
-     If you want to use this software for commercial purposes and you
-     don't want to make it open source, please contact the authors for
-     licensing.
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation version 2 of the License,                *
+ *   If you extend the program please maintain the list of authors.        *
+ *   If you want to use this software for commercial purposes and you      *
+ *   don't want to make it open source, please contact the authors for     *
+ *   licensing.                                                            *
  ***************************************************************************/

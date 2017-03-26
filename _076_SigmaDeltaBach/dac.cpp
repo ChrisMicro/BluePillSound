@@ -173,7 +173,7 @@ void DebugPrint(int32_t wert)
 
 /****************************************************************************
  *
- *   (c) 2013 Christoph Haberer, christoph(at)roboterclub-freiburg.de
+ *   (c) 2013 ChrisMicro
  *
  ***************************************************************************
  *   This program is free software; you can redistribute it and/or modify  *
