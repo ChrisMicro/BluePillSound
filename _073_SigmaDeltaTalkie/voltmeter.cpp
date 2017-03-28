@@ -106,8 +106,4 @@ void setWaveBuffer(uint8_t *waveBuffer,uint32_t bufferLength)
 {
   voice.setWaveBuffer(waveBuffer,bufferLength);
 }
-void setFunction_playSound(void (*functionPoitner)(uint32_t numberOfSamples))
-{
-  setFunction_playSound(functionPoitner);
-}
 

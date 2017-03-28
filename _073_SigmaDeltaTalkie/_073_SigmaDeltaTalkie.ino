@@ -22,12 +22,9 @@
 
 */
 
-#include "GPIOport.h"
+#include "speakerpin.h"
 #include "talkie.h"
 #include "voltmeter.h"
-
-// pin for sound out
-PB_12 FASTSOUNDPIN;
 
 #define MAXVALUE 255
 
@@ -78,7 +75,7 @@ void initSoundPlayer(uint32_t samplingFrequency_Hz)
   int32_t n;
   SamplingFrequency_Hz = samplingFrequency_Hz;
 
-  for (n = 0; n < INITTESTLENGTH; n++) WaveBuffer[n] = 128; // clear buffer
+  for (n = 0; n < INITTESTLENGTH; n++) WaveBuffer[n] = 0; // clear buffer
   delay(100);
   uint32_t startTime = micros();
   playSound(WaveBuffer, INITTESTLENGTH);
@@ -105,17 +102,12 @@ void calcSineWave()
   }
 }
 
-void  playSound1(uint32_t numberOfSamples)
-{
-    //playSound(WaveBuffer,numberOfSamples);
-}
 
 void setup() 
 {
   FASTSOUNDPIN.pinMode(OUTPUT);
   initSoundPlayer(FS); // FS=8000Hz
   setWaveBuffer(WaveBuffer,WAVEBUFFERLENGTH);
-  //setFunction_playSound(playSound1);
 }
 
 int Counter=0;
@@ -125,7 +117,6 @@ void loop()
   calcSineWave();
   playSound(WaveBuffer,WAVEBUFFERLENGTH);
   delay(2000);
-
 
   // clear buffer
   for(n=0;n<WAVEBUFFERLENGTH;n++)WaveBuffer[n]=0;

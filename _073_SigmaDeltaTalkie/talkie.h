@@ -25,7 +25,6 @@ class Talkie
     Talkie(void);
     void say(uint8_t* address);
     void setWaveBuffer(uint8_t *waveBuffer,uint32_t bufferLength);
-    void setFunction_playSound(void (*functionPoitner)(uint32_t numberOfSamples));
     uint8_t nextSample();
     uint8_t* ptrAddr;
     uint8_t ptrBit;
@@ -43,8 +42,6 @@ class Talkie
     uint8_t rev(uint8_t a);
     uint8_t getBits(uint8_t bits);
     uint8_t pgm_read_byte1(uint8_t *address) ;
-    void  (*CallBackFunctionPointer_playSound)(uint32_t numberOfSamples);
-
 };
 
 

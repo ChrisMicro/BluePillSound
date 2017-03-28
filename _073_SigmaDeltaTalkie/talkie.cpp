@@ -37,20 +37,11 @@ int8_t tmsK8[0x08]      = {0xC0, 0xD8, 0xF0, 0x07, 0x1F, 0x37, 0x4F, 0x66};
 int8_t tmsK9[0x08]      = {0xC0, 0xD4, 0xE8, 0xFC, 0x10, 0x25, 0x39, 0x4D};
 int8_t tmsK10[0x08]     = {0xCD, 0xDF, 0xF1, 0x04, 0x16, 0x20, 0x3B, 0x4D};
 
-
-//void  (*CallBackFunctionPointer_playSound)(uint32_t numberOfSamples);
-
-void Talkie::setFunction_playSound(void (*functionPoitner)(uint32_t numberOfSamples))
-{
-  //CallBackFunctionPointer_playSound = functionPoitner;
-}
-
 void Talkie::setWaveBuffer(uint8_t *waveBuffer,uint32_t bufferLength)
 {
   talkieWaveBuffer = waveBuffer;
   talkieWaveBufferLength = bufferLength;
   setup = 0;
-  CallBackFunctionPointer_playSound = 0;
 }
 
 void Talkie::setPtr(uint8_t* addr) {
@@ -190,7 +181,7 @@ void Talkie::say(uint8_t* addr) {
 
     }
   } while (energy != 0xf);
-  //if(CallBackFunctionPointer_playSound!=0)  CallBackFunctionPointer_playSound(talkieWaveBufferIndex);
+  
   talkieWaveBufferIndex = 0;
 }
 
