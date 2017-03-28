@@ -2,7 +2,7 @@
 
   sigma delta modulator experiments
 
-  sin wave generator controlled by analog input ( poti )
+  sin wave generator controlled by analog input ( poti connected to A0 )
 
 
   ************************************************************************
@@ -22,11 +22,9 @@
 
 */
 
-#include "integer_sin.h"
-#include "GPIOport.h"
 
-// pin for sound out
-PB_12 FASTSOUNDPIN;
+#include "speakerpin.h"
+#include "integer_sin.h"
 
 void setup() 
 {

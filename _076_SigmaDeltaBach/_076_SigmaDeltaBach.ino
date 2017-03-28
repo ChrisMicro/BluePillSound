@@ -92,10 +92,7 @@
 
 #ifdef PLATFORM_STMDUINO_STM32F103
 
-#include "GPIOport.h"
-
-// pin for sound out
-PB_12 FASTSOUNDPIN;
+#include "speakerpin.h"
 
 //***************************************  sigma delta player ****************************************
 #define MAXDACVALUE 0xFF

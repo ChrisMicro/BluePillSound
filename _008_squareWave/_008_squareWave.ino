@@ -13,7 +13,7 @@
 
 #else  // slow Arduino functions
   
-  #define SPEAKERPIN          PB12 // Blue Pill SPEAKER
+  #define SPEAKERPIN          PB0 // Blue Pill SPEAKER
   #define INITSPEAKERPIN      pinMode(SPEAKERPIN, OUTPUT)
   
   #define SPEAKERPINHIGH      digitalWrite(SPEAKERPIN, HIGH)

@@ -23,12 +23,7 @@
 */
 
 #include "integer_sin.h"
-#include "GPIOport.h"
-
-// pin for sound out
-PB_12 FASTSOUNDPIN;
-
-
+#include "speakerpin.h"
 
 #define MAXVALUE 255
 #define SONGLEN 256

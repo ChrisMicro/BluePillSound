@@ -100,7 +100,7 @@ class GPIOPortBPin {
       (void)pwm; // TODO: implement timer start/stop
     }
 };
-
+typedef GPIOPortBPin<0> PB_0;
 typedef GPIOPortBPin<1> PB_1;
 typedef GPIOPortBPin<2> PB_2;
 typedef GPIOPortBPin<12> PB_12;

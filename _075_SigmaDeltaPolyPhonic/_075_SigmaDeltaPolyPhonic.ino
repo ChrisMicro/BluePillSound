@@ -22,11 +22,7 @@
 
 */
 #include "integer_sin.h"
-#include "GPIOport.h"
-
-
-// pin for sound out
-PB_12 FASTSOUNDPIN;
+#include "speakerpin.h"
 
 void sigmaDeltaOscillatorBegin()
 {
