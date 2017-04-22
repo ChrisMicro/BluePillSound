@@ -42,7 +42,7 @@ void playSound(uint8_t *samplesBuffer, uint32_t bufferLength)
  
   uint32_t n,k;
   
-  FASTSOUNDPIN.pinMode(OUTPUT);
+  pinMode(FASTSOUNDPIN,OUTPUT);
   for(n=0;n<bufferLength;n++)
   {
     sollwert=WaveBuffer[n];
@@ -54,16 +54,16 @@ void playSound(uint8_t *samplesBuffer, uint32_t bufferLength)
       if (integrator > 0)
       {
         oldValue = MAXVALUE;
-        fastWrite(FASTSOUNDPIN, 1);
+        SPEAKERPINHIGH;
       }
       else
       {
         oldValue = 0;
-        fastWrite(FASTSOUNDPIN, 0);
+        SPEAKERPINLOW;
       }
     }
   }
-  FASTSOUNDPIN.pinMode(INPUT); // turn off pull up
+  pinMode(FASTSOUNDPIN,INPUT);
 }
 
 #define INITTESTLENGTH 1000 // must not be < 4000 to prevent uint32 overflow
@@ -102,10 +102,9 @@ void calcSineWave()
   }
 }
 
-
 void setup() 
 {
-  FASTSOUNDPIN.pinMode(OUTPUT);
+  pinMode(FASTSOUNDPIN,OUTPUT);
   initSoundPlayer(FS); // FS=8000Hz
   setWaveBuffer(WaveBuffer,WAVEBUFFERLENGTH);
 }
