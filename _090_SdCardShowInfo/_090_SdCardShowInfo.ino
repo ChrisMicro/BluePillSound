@@ -13,6 +13,8 @@
 //  SCK   <-->  PA5 
 //  MISO  <-->  PA6 
 //  MOSI  <-->  PA7 
+const int chipSelect = PA8;
+
 #include <SPI.h>
 #include <SD.h>
 
@@ -27,7 +29,7 @@ SdFile root;
 // Sparkfun SD shield: pin 8
 // MKRZero SD: SDCARD_SS_PIN
 
-const int chipSelect = PA8;
+
 
 void setup() {
   // Open serial communications and wait for port to open:
